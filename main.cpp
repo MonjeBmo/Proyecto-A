@@ -25,6 +25,7 @@ void inputLast(ptr_nodoList *ptr, char value);
 void inputPosition(ptr_nodoList *ptr, char value, int position);
 void deleteElement(ptr_nodoList *ptr, char value);
 // part 5 - 6
+void deleteList(ptr_nodoList *ptr);
 void printList(ptr_nodoList ptr);
 
 int main()
@@ -64,6 +65,21 @@ int main()
             break;
         case 5:
             /* code */
+            cout << "\t";
+            printList(list);
+
+            // Preguntar si se desea eliminar la lista
+            char res;
+
+            printf("\tDesea eliminar la lista? (s/n): ");
+            scanf(" %c", &res);
+
+            if (res == 's' || res == 'S')
+            {
+                deleteList(&list);
+                list = NULL;
+                printf("\tLISTA VACIA\n");
+            }
             break;
         case 6:
             /* code */
@@ -71,13 +87,14 @@ int main()
             printList(list);
             break;
         case 7:
-            cout << "\t\nFeliz Dia!\n\n";
+            cout << "\n\tFeliz Dia!\n\n";
             break;
 
         default:
             cout << "error - opcion no valida";
             break;
         }
+        cout << "\t";
         system("pause");
         system("cls");
 
@@ -153,4 +170,14 @@ void printList(ptr_nodoList ptr)
     }
 
     cout << endl;
+}
+
+void deleteList(ptr_nodoList *ptr)
+{
+    while (*ptr != NULL)
+    {
+        ptr_nodoList temp = *ptr;
+        *ptr = (*ptr)->ptr_s;
+        free(temp);
+    }
 }
