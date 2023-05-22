@@ -57,8 +57,8 @@ int main()
             int r1, n2;
             do
             {
-                cout << "\n\tIngrese el número que desea insertar: \n";
-                cout << "\t(El número debe ser impar)\n\t-> ";
+                cout << "\n\tIngrese el numero que desea insertar: \n";
+                cout << "\t(El numero debe ser impar)\n\t-> ";
                 cin >> n2;
             } while (isPar(n2));
             inputLast(&list, n2);
