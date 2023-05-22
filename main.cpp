@@ -17,6 +17,7 @@ typedef NodoLista *ptr_nodoList;
 // prototypes
 // general
 void instructions(void);
+bool isPar(int n);
 
 // part 1 - 2
 void inputFrist(ptr_nodoList *ptr, int value);
@@ -47,12 +48,20 @@ int main()
                 cout << "\n\tIngrese el numero que desea insertar: \n";
                 cout << "\t(El numero debe ser par)\n\t-> ";
                 cin >> n1;
-            } while (r = n1 % 2);
+            } while (!isPar(n1));
             inputFrist(&list, n1);
 
             break;
         case 2:
             /* code */
+            int r1, n2;
+            do
+            {
+                cout << "\n\tIngrese el número que desea insertar: \n";
+                cout << "\t(El número debe ser impar)\n\t-> ";
+                cin >> n2;
+            } while (isPar(n2));
+            inputLast(&list, n2);
             break;
         case 3:
             /* code */
@@ -123,6 +132,11 @@ int main()
     return 0;
 }
 
+bool isPar(int n)
+{
+    return n % 2 == 0;
+}
+
 void instructions(void)
 {
     cout << "\t\tPROYECTO - A" << endl;
@@ -144,6 +158,23 @@ void inputFrist(ptr_nodoList *ptr, int value)
     nuevo_nodo->d = value;
 
     *ptr = nuevo_nodo;
+    nuevo_nodo->ptr_s = aux1;
+
+    cout << "\tEl numero -> " << value << ", insertado correctamente.\n";
+}
+
+void inputLast(ptr_nodoList *ptr, int value)
+{
+    nodoList *nuevo_nodo = new nodoList();
+    nuevo_nodo->d = value;
+
+    nodoList *aux1 = *ptr;
+    nodoList *aux2;
+
+    aux2 = aux1;
+    aux1 = aux1->ptr_s;
+
+    aux2->ptr_s = nuevo_nodo;
     nuevo_nodo->ptr_s = aux1;
 
     cout << "\tEl numero -> " << value << ", insertado correctamente.\n";
