@@ -7,7 +7,7 @@ using namespace std;
 // nodo
 struct nodoList
 {
-    char d;
+    int d;
     struct nodoList *ptr_s;
 };
 
@@ -19,11 +19,11 @@ typedef NodoLista *ptr_nodoList;
 void instructions(void);
 
 // part 1 - 2
-void inputFrist(ptr_nodoList *ptr, char value);
-void inputLast(ptr_nodoList *ptr, char value);
+void inputFrist(ptr_nodoList *ptr, int value);
+void inputLast(ptr_nodoList *ptr, int value);
 // part 3 - 4
-void inputPosition(ptr_nodoList *ptr, char value, int position);
-void deleteElement(ptr_nodoList *ptr, char value);
+void inputPosition(ptr_nodoList *ptr, int value, int position);
+void deleteElement(ptr_nodoList *ptr, int value);
 // part 5 - 6
 void deleteList(ptr_nodoList *ptr);
 void printList(ptr_nodoList ptr);
@@ -48,7 +48,7 @@ int main()
         case 3:
             /* code */
             int po;
-            char value;
+            int value;
             cout << "\n\tLista antes de ingresar ->\n\t";
             printList(list);
             cout << "\n\tIngrese la posicion -> ";
@@ -115,7 +115,7 @@ void instructions(void)
     cout << "\tIngrese su opcion -> ";
 }
 
-void inputPosition(ptr_nodoList *ptr, char value, int position)
+void inputPosition(ptr_nodoList *ptr, int value, int position)
 {
     ptr_nodoList newNode = (ptr_nodoList)malloc(sizeof(NodoLista));
     if (newNode == NULL)
