@@ -167,15 +167,21 @@ void inputLast(ptr_nodoList *ptr, int value)
 {
     nodoList *nuevo_nodo = new nodoList();
     nuevo_nodo->d = value;
+    nuevo_nodo->ptr_s = nullptr; // El nuevo nodo será el último, por lo que su puntero siguiente será nullptr
 
-    nodoList *aux1 = *ptr;
-    nodoList *aux2;
-
-    aux2 = aux1;
-    aux1 = aux1->ptr_s;
-
-    aux2->ptr_s = nuevo_nodo;
-    nuevo_nodo->ptr_s = aux1;
+    if (*ptr == nullptr)
+    {
+        *ptr = nuevo_nodo;
+    }
+    else
+    {
+        nodoList *ultimo = *ptr;
+        while (ultimo->ptr_s != nullptr)
+        {
+            ultimo = ultimo->ptr_s;
+        }
+        ultimo->ptr_s = nuevo_nodo;
+    }
 
     cout << "\tEl numero -> " << value << ", insertado correctamente.\n";
 }
