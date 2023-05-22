@@ -44,8 +44,8 @@ int main()
             int r, n1;
             do
             {
-                cout << "Ingrese el numero que desea insertar: \n";
-                cout << "(El numero debe ser par)\n";
+                cout << "\n\tIngrese el numero que desea insertar: \n";
+                cout << "\t(El numero debe ser par)\n\t-> ";
                 cin >> n1;
             } while (r = n1 % 2);
             inputFrist(&list, n1);
@@ -115,7 +115,7 @@ int main()
             cout << "error - opcion no valida";
             break;
         }
-        cout << "\t";
+        cout << "\n\n\t--------------------------------------\n\n\t";
         system("pause");
         system("cls");
 
@@ -146,7 +146,7 @@ void inputFrist(ptr_nodoList *ptr, int value)
     *ptr = nuevo_nodo;
     nuevo_nodo->ptr_s = aux1;
 
-    cout << value << " insertado correctamente.\n";
+    cout << "\tEl numero -> " << value << ", insertado correctamente.\n";
 }
 
 void inputPosition(ptr_nodoList *ptr, int value, int position)
