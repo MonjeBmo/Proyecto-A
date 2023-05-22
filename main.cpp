@@ -71,6 +71,18 @@ int main()
             break;
         case 4:
             /* code */
+            int valueD;
+            cout << "\n\tLista antes de eliminar ->\n\t";
+            printList(list);
+
+            cout << "\tElemento a eliminar -> ";
+            scanf("%d", &valueD);
+
+            deleteElement(&list, valueD);
+
+            cout << "\n\tLista despues de eliminar ->\n\t";
+            printList(list);
+
             break;
         case 5:
             /* code */
@@ -173,6 +185,38 @@ void inputPosition(ptr_nodoList *ptr, int value, int position)
 
     newNode->ptr_s = current->ptr_s;
     current->ptr_s = newNode;
+}
+
+void deleteElement(ptr_nodoList *ptr, int value)
+{
+    ptr_nodoList temp = *ptr;
+    ptr_nodoList prev = NULL;
+
+    // Si el elemento a eliminar es el primero de la lista
+    if (temp != NULL && temp->d == value)
+    {
+        *ptr = temp->ptr_s; // Actualizamos el puntero inicial
+        free(temp);         // Liberamos la memoria del nodo eliminado
+        return;
+    }
+
+    // Buscamos el nodo que contiene el elemento a eliminar
+    while (temp != NULL && temp->d != value)
+    {
+        prev = temp;
+        temp = temp->ptr_s;
+    }
+
+    // Si no se encuentra el elemento en la lista
+    if (temp == NULL)
+    {
+        printf("\tNo se encontro el valor -> %d\n", value);
+        return;
+    }
+
+    // Eliminamos el nodo que contiene el elemento
+    prev->ptr_s = temp->ptr_s;
+    free(temp); // Liberamos la memoria del nodo eliminado
 }
 
 void printList(ptr_nodoList ptr)
