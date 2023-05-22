@@ -41,6 +41,15 @@ int main()
         {
         case 1:
             /* code */
+            int r, n1;
+            do
+            {
+                cout << "Ingrese el numero que desea insertar: \n";
+                cout << "(El numero debe ser par)\n";
+                cin >> n1;
+            } while (r = n1 % 2);
+            inputFrist(&list, n1);
+
             break;
         case 2:
             /* code */
@@ -113,6 +122,19 @@ void instructions(void)
     cout << "\t6- Mostrar lista" << endl;
     cout << "\t7- Salir" << endl;
     cout << "\tIngrese su opcion -> ";
+}
+
+void inputFrist(ptr_nodoList *ptr, int value)
+{
+    nodoList *nuevo_nodo = new nodoList();
+    nodoList *aux1 = *ptr;
+
+    nuevo_nodo->d = value;
+
+    *ptr = nuevo_nodo;
+    nuevo_nodo->ptr_s = aux1;
+
+    cout << value << " insertado correctamente.\n";
 }
 
 void inputPosition(ptr_nodoList *ptr, int value, int position)
